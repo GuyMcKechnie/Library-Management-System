@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" styleClass="anchor-pane" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.library.MainController">
+   <children>
+      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <Pane BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="TOP_CENTER" spacing="10.0">
+                     <children>
+                        <Button fx:id="mv_Username" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMVUser" styleClass="button-main-view" text="memUsername">
+                           <graphic>
+                              <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../image/mainView-user.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#handleMVOverview" prefHeight="40.0" prefWidth="200.0" styleClass="button-main-view" stylesheets="@../style.css" text="Library Overview" />
+                        <Button mnemonicParsing="false" onAction="#handleMVMembers" prefHeight="40.0" prefWidth="200.0" styleClass="button-main-view" text="Members" />
+                        <Button mnemonicParsing="false" onAction="#handleMVBooks" prefHeight="40.0" prefWidth="200.0" styleClass="button-main-view" text="Books" />
+                        <Button layoutX="10.0" layoutY="220.0" mnemonicParsing="false" onAction="#handleMVBorrowed" prefHeight="40.0" prefWidth="200.0" styleClass="button-main-view" text="Borrowed Books" />
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+         </left>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <StackPane fx:id="mv_ContentArea" prefHeight="592.0" prefWidth="692.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <children>
+                     <AnchorPane fx:id="mv_Overview">
+                        <children>
+                           <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0">
+                              <children>
+                                 <PieChart fx:id="mv_PieChart" legendSide="TOP" legendVisible="false" prefHeight="300.0" prefWidth="300.0" styleClass="anchor-pane" title="Book Author Overview" />
+                              </children>
+                           </AnchorPane>
+                           <AnchorPane layoutX="322.0" layoutY="14.0" prefHeight="71.0" prefWidth="356.0">
+                              <children>
+                                 <GridPane prefHeight="158.4" prefWidth="356.0" style="-fx-background-color: #3b8686;" styleClass="anchor-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                   <columnConstraints>
+                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                   </columnConstraints>
+                                   <rowConstraints>
+                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                   </rowConstraints>
+                                    <children>
+                                       <Label alignment="CENTER" contentDisplay="CENTER" styleClass="white-bold-text" text="Number of Books" />
+                                       <Label styleClass="white-bold-text" text="Number of Members" GridPane.rowIndex="1" />
+                                       <Label layoutX="10.0" layoutY="38.0" styleClass="white-bold-text" text="Number of Borrowed Books" GridPane.rowIndex="2" />
+                                       <Label fx:id="numBooks" styleClass="white-bold-text" text="Label" GridPane.columnIndex="1" />
+                                       <Label fx:id="numMembers" styleClass="white-bold-text" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                       <Label fx:id="numBorrowedBooks" styleClass="white-bold-text" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    </children>
+                                 </GridPane>
+                              </children>
+                           </AnchorPane>
+                        </children></AnchorPane>
+                     <AnchorPane fx:id="mv_Members" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../style.css" visible="false">
+                        <children>
+                           <TreeTableView fx:id="memTreeTable" prefHeight="592.0" prefWidth="692.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                             <columns>
+                               <TreeTableColumn prefWidth="75.0" text="C1" />
+                               <TreeTableColumn prefWidth="75.0" text="C2" />
+                             </columns>
+                           </TreeTableView>
+                        </children></AnchorPane>
+                     <AnchorPane fx:id="mv_Books" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+                        <children>
+                           <TreeTableView fx:id="bookTreeTable" prefHeight="592.0" prefWidth="692.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                             <columns>
+                               <TreeTableColumn prefWidth="75.0" text="C1" />
+                               <TreeTableColumn prefWidth="75.0" text="C2" />
+                             </columns>
+                           </TreeTableView>
+                        </children>
+                     </AnchorPane>
+                     <AnchorPane fx:id="mv_User" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+                        <children>
+                           <VBox alignment="TOP_CENTER" layoutX="167.0" prefHeight="552.0" prefWidth="310.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="167.0" AnchorPane.rightAnchor="215.0" AnchorPane.topAnchor="0.0">
+                              <children>
+                                 <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@../image/mainView-user.png" />
+                                    </image>
+                                 </ImageView>
+                                 <Separator prefHeight="14.0" prefWidth="236.0" />
+                                 <Label styleClass="green-bold-text" text="Account Username" />
+                                 <Label fx:id="av_Username" styleClass="white-bold-text" text="memUsername" />
+                                 <GridPane alignment="CENTER" layoutX="10.0" layoutY="383.0">
+                                    <columnConstraints>
+                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                       <Label fx:id="av_Passcode" prefWidth="150.0" style="-fx-background-color: #3b8686;" styleClass="button" text="********" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                                       <ToggleButton fx:id="viewPasscodeTB" mnemonicParsing="false" onAction="#handleViewPasscode" prefHeight="25.0" prefWidth="150.0" styleClass="button" text="View Password" />
+                                    </children>
+                                 </GridPane>
+                                 <GridPane>
+                                   <columnConstraints>
+                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                   </columnConstraints>
+                                   <rowConstraints>
+                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                   </rowConstraints>
+                                    <children>
+                                       <Button mnemonicParsing="false" onAction="#handleChangeUsername" prefWidth="150.0" text="Change Username" GridPane.halignment="LEFT" />
+                                       <TextField fx:id="changeUsername" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                                    </children>
+                                 </GridPane>
+                                 <GridPane alignment="CENTER" layoutX="10.0" layoutY="283.0">
+                                    <columnConstraints>
+                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                       <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleChangePasscode" prefWidth="150.0" text="Change Passcode" GridPane.halignment="LEFT" />
+                                       <TextField fx:id="changePasscode" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                                    </children>
+                                 </GridPane>
+                              </children>
+                           </VBox>
+                        </children>
+                     </AnchorPane>
+                     <AnchorPane fx:id="mv_BorrowedBooks" prefHeight="200.0" prefWidth="200.0" visible="false">
+                        <children>
+                           <TreeTableView fx:id="borrowedBookTreeTable" prefHeight="592.0" prefWidth="692.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                             <columns>
+                               <TreeTableColumn prefWidth="75.0" text="C1" />
+                               <TreeTableColumn prefWidth="75.0" text="C2" />
+                             </columns>
+                           </TreeTableView>
+                        </children>
+                     </AnchorPane>
+                     <AnchorPane fx:id="mv_Help" prefHeight="200.0" prefWidth="200.0" visible="false">
+                        <children>
+                           <TabPane prefHeight="552.8" prefWidth="681.6" styleClass="white-bold-text" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                             <tabs>
+                               <Tab closable="false" text="User Information">
+                                 <content>
+                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          <children>
+                                             <VBox alignment="TOP_CENTER" layoutX="166.0" prefWidth="350.0" stylesheets="@../style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="166.0" AnchorPane.rightAnchor="165.0" AnchorPane.topAnchor="0.0">
+                                                <children>
+                                                   <Label alignment="CENTER" styleClass="green-bold-text" text="Viewing Your Account Information" />
+                                                   <Label styleClass="white-bold-text" text="To access detailed information about your account, navigate to the User Overview screen. This section of the application provides a summary of your account details, allowing you to easily view and manage your information." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="252.0" layoutY="10.0" styleClass="green-bold-text" text="What You Can See" />
+                                                   <Label layoutX="204.0" layoutY="27.0" styleClass="white-bold-text" text="Username: Your unique identifier within the system. This is the name you use to log in to your account." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label layoutX="204.0" layoutY="135.0" styleClass="white-bold-text" text="Password: For security purposes, the system displays your password in a masked format. However, you can verify that your password is set correctly." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="122.0" layoutY="112.0" styleClass="green-bold-text" text="How to Access the User Overview Screen" />
+                                                   <Label layoutX="10.0" layoutY="163.0" styleClass="white-bold-text" text="Login: Begin by logging into the system using your credentials." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label layoutX="10.0" layoutY="231.0" styleClass="white-bold-text" text="Navigate to the User Overview: After logging in, you can access the User Overview screen from the main menu by selecting your account." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="59.0" layoutY="214.0" styleClass="green-bold-text" text="Managing Your Information" />
+                                                   <Label layoutX="10.0" layoutY="265.0" styleClass="white-bold-text" text="Update Password: If you need to change your password, select the &quot;Change Password&quot; option and follow the prompts." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label layoutX="10.0" layoutY="333.0" styleClass="white-bold-text" text="Edit Username: Depending on system permissions, you might be able to update your username from this screen." textAlignment="JUSTIFY" wrapText="true" />
+                                                </children>
+                                             </VBox>
+                                          </children></AnchorPane>
+                                 </content>
+                               </Tab>
+                               <Tab text="Overview">
+                                 <content>
+                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          <children>
+                                             <VBox alignment="TOP_CENTER" layoutX="166.0" prefWidth="350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="166.0" AnchorPane.rightAnchor="165.0" AnchorPane.topAnchor="0.0">
+                                                <children>
+                                                   <Label alignment="CENTER" styleClass="green-bold-text" text="Viewing the Library System Overview" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="80.0" layoutY="10.0" styleClass="white-bold-text" text="To get a comprehensive snapshot of the library's systems, you can visit the Overview page. This screen serves as a centralized hub, providing a summary of key information about the library's database and its contents." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="80.0" layoutY="10.0" styleClass="green-bold-text" text="What You Can See" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="27.0" styleClass="white-bold-text" text="Authors: A summary of the authors whose works are included in the library's collection. This section gives you insight into the range of contributors available in the library." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="112.0" styleClass="white-bold-text" text="Important Database Information: The overview page consolidates essential data from the library's database, offering you a quick glance at the most important details." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="133.0" layoutY="95.0" styleClass="green-bold-text" text="How to Access the Overview Page" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="163.0" styleClass="white-bold-text" text="Login: Begin by logging into the system using your credentials." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="231.0" styleClass="white-bold-text" text="Navigate to the Overview: Once logged in, you can access the Overview page by selecting &quot;Library Overview&quot; from the main menu." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="90.0" layoutY="214.0" styleClass="green-bold-text" text="Understanding the Overview Information" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="265.0" styleClass="white-bold-text" text="Author Information: A breakdown of the number of books associated with each author, giving you a sense of the diversity and volume of works in the collection." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="333.0" styleClass="white-bold-text" text="Database Statistics: A summary of other crucial database metrics, such as the total number of books, genres, or other categories that are relevant to the library's operations." textAlignment="JUSTIFY" wrapText="true" />
+                                                </children>
+                                             </VBox>
+                                          </children></AnchorPane>
+                                 </content>
+                               </Tab>
+                                 <Tab text="Books">
+                                    <content>
+                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          <children>
+                                             <VBox alignment="TOP_CENTER" layoutX="166.0" prefHeight="524.0" prefWidth="350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="166.0" AnchorPane.rightAnchor="165.0" AnchorPane.topAnchor="0.0">
+                                                <children>
+                                                   <Label alignment="CENTER" styleClass="green-bold-text" text="Viewing the Library's Books" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="80.0" layoutY="10.0" styleClass="white-bold-text" text="To explore the full catalog of books available in the library, visit the Books screen. This section provides detailed information on every book stored in the library's database, allowing you to access critical data at a glance." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="80.0" layoutY="10.0" styleClass="green-bold-text" text="What You Can See" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="27.0" styleClass="white-bold-text" text="Book ID: A unique identifier for each book in the library. This ID helps in quickly locating specific books and managing the inventory." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="112.0" styleClass="white-bold-text" text="Author: The name of the author(s) associated with each book. This information helps you trace books by their creators and understand the diversity of authors represented in the library." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="163.0" styleClass="white-bold-text" text="ISBN Number: The International Standard Book Number (ISBN) for each book, which is a unique identifier used globally for book identification. This is particularly useful for tracking specific editions or managing library logistics." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="133.0" layoutY="95.0" styleClass="green-bold-text" text="How to Access the Books Screen" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="163.0" styleClass="white-bold-text" text="Login: Begin by logging into the system using your credentials." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="231.0" styleClass="white-bold-text" text="Navigate to the Books Screen: After logging in, you can access the Books screen by selecting &quot;Books&quot; from the main menu." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="90.0" layoutY="214.0" styleClass="green-bold-text" text="Understanding the Books Information" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="265.0" styleClass="white-bold-text" text="Detailed Book Information: Every entry in the database is displayed, offering a clear view of the book's ID, the associated author, and the ISBN number. This makes it easy to manage and locate books within the library system." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="333.0" styleClass="white-bold-text" text="Easy Navigation: The interface allows you to scroll through the entire list of books or search for specific entries using keywords or identifiers." textAlignment="JUSTIFY" wrapText="true" />
+                                                </children>
+                                             </VBox>
+                                          </children></AnchorPane>
+                                    </content>
+                                 </Tab>
+                                 <Tab text="Members">
+                                    <content>
+                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          <children>
+                                             <VBox alignment="TOP_CENTER" layoutX="141.0" prefHeight="524.0" prefWidth="400.0">
+                                                <children>
+                                                   <Label alignment="CENTER" styleClass="green-bold-text" text="Viewing Library Members Information" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="80.0" layoutY="10.0" styleClass="white-bold-text" text="To access detailed information about all the members registered in the library, visit the Members screen. This section offers a comprehensive overview of every user in the system, enabling efficient management and tracking of library members." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="80.0" layoutY="10.0" styleClass="green-bold-text" text="What You Can See" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="27.0" styleClass="white-bold-text" text="Member ID: A unique identifier assigned to each library member. This ID is essential for managing member records, tracking borrowing history, and other administrative tasks." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="112.0" styleClass="white-bold-text" text="Full Name: The complete name of each member, including first name and surname. This helps in identifying and distinguishing between different users." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="163.0" styleClass="white-bold-text" text="Username: The username associated with each member's account. This is the credential they use to log into the library system, and it is crucial for managing their online interactions within the system." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="133.0" layoutY="95.0" styleClass="green-bold-text" text="How to Access the Books Screen" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="163.0" styleClass="white-bold-text" text="Login: Begin by logging into the system using your credentials." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="231.0" styleClass="white-bold-text" text="Navigate to the Members Screen: Once logged in, select &quot;Members&quot; from the main menu to view all the details about the library's users." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="90.0" layoutY="214.0" styleClass="green-bold-text" text="Understanding the Members Information" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="265.0" styleClass="white-bold-text" text="Comprehensive Member Data: Each entry in the members database is displayed, showing their Member ID, full name, and username. This helps in efficiently managing member interactions and maintaining accurate records." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="333.0" styleClass="white-bold-text" text="User-Friendly Interface: The interface allows for easy navigation through the list of members. You can scroll through the entire list or use search functionality to quickly find specific users." textAlignment="JUSTIFY" wrapText="true" />
+                                                </children>
+                                             </VBox>
+                                          </children></AnchorPane>
+                                    </content>
+                                 </Tab>
+                                 <Tab text="Borrowed Books">
+                                    <content>
+                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          <children>
+                                             <VBox alignment="TOP_CENTER" layoutX="141.0" prefHeight="524.0" prefWidth="400.0">
+                                                <children>
+                                                   <Label alignment="CENTER" styleClass="green-bold-text" text="Viewing Borrowed Books Information" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="80.0" layoutY="10.0" styleClass="white-bold-text" text="To access detailed information about all the books currently borrowed from the library, visit the Borrowed Books screen. This section provides a comprehensive overview of all loaned items, allowing for effective tracking and management of borrowed materials." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="80.0" layoutY="10.0" styleClass="green-bold-text" text="What You Can See" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="27.0" styleClass="white-bold-text" text="Book ID: The unique identifier assigned to each book in the library's collection. This ID is crucial for tracking which specific book has been borrowed." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="112.0" styleClass="white-bold-text" text="Member ID: The identifier associated with the library member who borrowed the book. This helps in monitoring which user currently has the book on loan." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="163.0" styleClass="white-bold-text" text="Borrow Date: The date when the book was borrowed. This information is essential for managing loan periods and ensuring timely returns." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="214.0" styleClass="white-bold-text" text="Return Date: The date when the book was returned by the user. If the book has not yet been returned, this field will be blank, indicating that the item is still on loan." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="133.0" layoutY="95.0" styleClass="green-bold-text" text="How to Access the Books Screen" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="163.0" styleClass="white-bold-text" text="Login: Begin by logging into the system using your credentials." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="231.0" styleClass="white-bold-text" text="Navigate to the Borrowed Books Screen: After logging in, select &quot;Borrowed Books&quot; from the main menu to view all the details about the books currently borrowed from the library." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="90.0" layoutY="214.0" styleClass="green-bold-text" text="Understanding the Borrowed Books Information" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="265.0" styleClass="white-bold-text" text="Comprehensive Loan Data: Each entry in the borrowed books database displays the Book ID, Member ID, borrow date, and return date. This allows for efficient tracking of library materials and ensures accountability." textAlignment="JUSTIFY" wrapText="true" />
+                                                   <Label alignment="CENTER" layoutX="10.0" layoutY="333.0" styleClass="white-bold-text" text="User-Friendly Interface: The interface is designed for easy navigation, allowing you to scroll through the list of borrowed books or use search functionality to find specific loan records quickly." textAlignment="JUSTIFY" wrapText="true" />
+                                                </children>
+                                             </VBox>
+                                          </children></AnchorPane>
+                                    </content>
+                                 </Tab>
+                             </tabs>
+                           </TabPane>
+                        </children>
+                     </AnchorPane>
+                  </children></StackPane>
+            </AnchorPane>
+         </center>
+         <top>
+            <AnchorPane prefHeight="0.0" prefWidth="892.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="helpButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="831.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleHelp" prefHeight="19.0" prefWidth="18.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/help.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
