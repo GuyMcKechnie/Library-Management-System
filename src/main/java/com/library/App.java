@@ -43,6 +43,7 @@ public class App extends Application {
             primaryStage.show();
 
             //@todo ADDING LOADING BAR
+            System.out.println("Hello World!");
         } catch (Exception e) {
             e.printStackTrace();
         }
