@@ -17,7 +17,7 @@ The Library Management System is a Java-based application designed to manage lib
 
 - **Java:** Core programming language.
 - **JavaFX:** For building the graphical user interface.
-- **MySQL (or other RDBMS):** For database management.
+- **MS Access (or other RDBMS):** For database management.
 - **Maven:** Project build and dependency management.
 - **JUnit:** For unit testing.
 
@@ -27,7 +27,7 @@ The Library Management System is a Java-based application designed to manage lib
 
 - Java Development Kit (JDK) 8 or later
 - Maven
-- MySQL (or any compatible relational database)
+- MS Access
 
 ### Steps
 
