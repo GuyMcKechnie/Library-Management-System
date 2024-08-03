@@ -9,12 +9,7 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 
-import javax.swing.text.DateFormatter;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.sql.*;
-import java.text.ParseException;
 
 public class Book {
     public static void initPieChart(PieChart pieChart) {
@@ -67,7 +62,8 @@ public class Book {
         }
     }
 
-    public static void initTable(TreeTableView bookTreeTable) {
+    @SuppressWarnings("unchecked")
+    public static void initTable(@SuppressWarnings("rawtypes") TreeTableView bookTreeTable) {
         //Open the database and assign all the data in the table to cells in the treeTable
         try {
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
@@ -88,7 +84,7 @@ public class Book {
             authorIDColumn.setCellValueFactory(new TreeItemPropertyValueFactory<>("AuthorID"));
             bookTreeTable.getColumns().add(IDColumn);
             bookTreeTable.getColumns().add(titleColumn);
-            bookTreeTable.getColumns().add(isbnColumn); // paste the link where in the chat you wanna move to discord or something? i was just gonna do it with ai.
+            bookTreeTable.getColumns().add(isbnColumn);
             bookTreeTable.getColumns().add(authorIDColumn);
             TreeItem<BookDataModel> rootItem = new TreeItem<>(new BookDataModel("IDRoot", "titleRoot", "isbnRoot", "usernameRoot"));
             rootItem.setExpanded(true);
@@ -107,7 +103,8 @@ public class Book {
         }
     }
 
-    public static void initBorrowedBookTable(TreeTableView borrowedBookTreeTable) {
+    @SuppressWarnings("unchecked")
+    public static void initBorrowedBookTable(@SuppressWarnings("rawtypes") TreeTableView borrowedBookTreeTable) {
         //Open the database and aadd the data from the borrowed books table into the tree table
         try {
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");

@@ -1,6 +1,5 @@
 package com.library.util;
 
-import com.library.MainController;
 import javafx.scene.control.TextField;
 
 import javax.swing.*;
@@ -11,8 +10,6 @@ import java.sql.Statement;
 
 public class DataValidation {
     public static boolean signUpValidation(TextField fullNameInput, TextField usernameInput, TextField passcodeInput) {
-        MainController mc = new MainController();
-
         Boolean result = false;
 
         String fullName = fullNameInput.getText();
@@ -47,8 +44,6 @@ public class DataValidation {
         return result;
     }
     public static boolean loginValidation(TextField username, TextField passcode){
-        MainController mc = new MainController();
-
         Boolean result = false;
 
         String usernameText = username.getText();

@@ -119,7 +119,8 @@ public class Member {
     }
 
     //Can't you show the date when it was borrowed and that as well?
-    public static void initTable(TreeTableView memTreeTable) {
+    @SuppressWarnings("unchecked")
+    public static void initTable(@SuppressWarnings("rawtypes") TreeTableView memTreeTable) {
         //Open the database and assign all the data in the table to cells in the treeTable
         try {
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");

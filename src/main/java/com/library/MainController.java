@@ -13,8 +13,18 @@ import javafx.stage.Stage;
 import java.sql.*;
 
 public class MainController {
+
     @FXML
     public static Label su_fullName;
+
+    public static Label getSu_fullName() {
+        return su_fullName;
+    }
+
+    public static void setSu_fullName(Label su_fullName) {
+        MainController.su_fullName = su_fullName;
+    }
+
     @FXML
     static Stage onboardingStage;
     @FXML
@@ -53,13 +63,16 @@ public class MainController {
     Label numMembers;
     @FXML
     Label numBorrowedBooks;
+    @SuppressWarnings("rawtypes")
     @FXML
     TreeTableView memTreeTable;
     @FXML
     Button mv_Username = new Button();
+    @SuppressWarnings("rawtypes")
     @FXML
     TreeTableView bookTreeTable;
 
+    @SuppressWarnings("rawtypes")
     @FXML
     TreeTableView borrowedBookTreeTable;
 
@@ -80,22 +93,24 @@ public class MainController {
         return av_Passcode;
     }
 
-    public TreeTableView getBorrowedBookTreeTable() {
-        return borrowedBookTreeTable;
+    @SuppressWarnings("unchecked")
+    public TreeTableView<Book> getBorrowedBookTreeTable() {
+        return (TreeTableView<Book>) borrowedBookTreeTable;
     }
 
     public Button getMvUsernameButton() {
         return mv_Username;
     }
 
-    public TreeTableView getBookTreeTable() {
-        return bookTreeTable;
+    @SuppressWarnings("unchecked")
+    public TreeTableView<Book> getBookTreeTable() {
+        return (TreeTableView<Book>) bookTreeTable;
     }
 
-    public TreeTableView getMemTreeTable() {
-        return memTreeTable;
+    @SuppressWarnings("unchecked")
+    public TreeTableView<Member> getMemTreeTable() {
+        return (TreeTableView<Member>) memTreeTable;
     }
-
 
     public Label getNumBooks() {
         return numBooks;
@@ -123,7 +138,7 @@ public class MainController {
 
     @FXML
     private PieChart mv_PieChart;
-    Pane[] mvPanes = new Pane[]{mv_Overview, mv_Members, mv_Books, mv_User};
+    Pane[] mvPanes = new Pane[] { mv_Overview, mv_Members, mv_Books, mv_User };
 
     public static Stage getOnboardingStage() {
         return onboardingStage;
@@ -144,7 +159,7 @@ public class MainController {
     @FXML
     private void handleSignUp(ActionEvent event) {
         try {
-            //Run the initAddMemberView method in the Member class
+            // Run the initAddMemberView method in the Member class
             Member.initAddMemberView(getOnboardingStage());
         } catch (Exception e) {
             e.printStackTrace();
@@ -153,13 +168,13 @@ public class MainController {
 
     @FXML
     private void handleAddMember(ActionEvent event) {
-        //Run the addMember method in the Member class
+        // Run the addMember method in the Member class
         Member.addMember(fullNameInput, usernameInput, passcodeInput, getSignUpStage(), getOnboardingStage());
     }
 
     @FXML
     private void handleLogin(ActionEvent event) {
-        //Run the login method in the Member class
+        // Run the login method in the Member class
         Member.setUsername(getLg_UsernameInput().getText());
         Member.setPasscode(getLg_PasscodeInput().getText());
         Member.initMainView(getOnboardingStage(), getLg_UsernameInput(), getLg_PasscodeInput());
@@ -231,7 +246,7 @@ public class MainController {
 
     @FXML
     private void initialize() {
-        //Set the username to the button
+        // Set the username to the button
         if (mv_Username != null) {
             mv_Username.setText(Member.getUsername());
         } else {
@@ -241,16 +256,18 @@ public class MainController {
         if (mv_PieChart != null) {
             try {
                 Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-                Connection connection = DriverManager.getConnection("jdbc:ucanaccess://src/main/resources/com/library/database/LibDatabase.accdb");
+                Connection connection = DriverManager
+                        .getConnection("jdbc:ucanaccess://src/main/resources/com/library/database/LibDatabase.accdb");
                 System.out.println("Database connected.");
                 Statement statement = connection.createStatement();
                 ResultSet totalBooksResult = statement.executeQuery("SELECT COUNT(BookID) AS TotalBooks FROM tblBooks");
                 totalBooksResult.next();
                 int totalBooks = totalBooksResult.getInt("TotalBooks");
-                ResultSet authorResult = statement.executeQuery("SELECT a.[Author Name], COUNT(b.BookID) AS NumberOfBooks " +
-                        "FROM tblBooks b " +
-                        "INNER JOIN tblAuthors a ON b.AuthorID = a.[Author ID] " +
-                        "GROUP BY a.[Author Name]");
+                ResultSet authorResult = statement
+                        .executeQuery("SELECT a.[Author Name], COUNT(b.BookID) AS NumberOfBooks " +
+                                "FROM tblBooks b " +
+                                "INNER JOIN tblAuthors a ON b.AuthorID = a.[Author ID] " +
+                                "GROUP BY a.[Author Name]");
                 mv_PieChart.getData().clear();
                 while (authorResult.next()) {
                     String author = authorResult.getString("Author Name");

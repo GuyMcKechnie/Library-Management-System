@@ -1,5 +1,5 @@
 module com.library {
-    requires javafx.controls;
+    requires transitive javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
 
@@ -16,7 +16,9 @@ module com.library {
 
     opens com.library to javafx.fxml;
     opens com.library.util to javafx.base;
+
     exports com.library;
     exports com.library.model;
+
     opens com.library.model to javafx.fxml;
 }
