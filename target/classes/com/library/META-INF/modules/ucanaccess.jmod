@@ -1,0 +1,10 @@
+module ucanaccess {
+    requires java.sql;
+
+    exports com.healthmarketscience.jackcess;
+    exports com.healthmarketscience.jackcess.db;
+    exports com.healthmarketscience.jackcess.util;
+    exports com.healthmarketscience.jackcess.util.text;
+    exports com.healthmarketscience.jackcess.util.xml;
+    exports com.healthmarketscience.jackcess.xml;
+}
