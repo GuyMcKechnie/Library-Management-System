@@ -1,3 +1,8 @@
+.main-title-green-bold {
+  -fx-text-fill: #3b8686;
+  -fx-font-weight: bold;
+}
+
 .green-title-bold {
   -fx-text-fill: #3b8686;
   -fx-font-weight: bold;
@@ -41,8 +46,14 @@
 
 .button:hover {
   -fx-background-color: #3b868695;
+  -fx-background-radius: 5;
+  -fx-border-color: #3b868695;
+  -fx-border-width: 4px;
+  -fx-border-radius: 5px;
 }
 
-.button:pressed {
-  -fx-background-color: #3b868695;
+.image-container {
+  -fx-background-color: #3b868641;
+  -fx-border-color: #3b8686;
+  -fx-border-width: 4px;
 }

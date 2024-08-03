@@ -13,9 +13,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="350.0" styleClass="anchor-pane" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.library.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="350.0" stylesheets="@../style.css"
+    xmlns="http://javafx.com/javafx/22"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.library.MainController">
     <children>
-        <HBox prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #a8dba8;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <HBox prefHeight="300.0" prefWidth="300.0" styleClass="hbox" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <AnchorPane minHeight="0.0" minWidth="0.0">
                     <children>
@@ -32,23 +34,23 @@
                             <children>
                                 <VBox alignment="CENTER">
                                     <children>
-                                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="140.0" text="Library Manager" textFill="#3b8686">
+                                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="140.0" styleClass="green-title-bold" text="Library Manager" textFill="WHITE">
                                             <font>
                                                 <Font name="Arial Black" size="15.0" />
                                             </font>
                                         </Label>
-                                        <Label alignment="CENTER" text="v1.12.19.01" textFill="WHITE" />
+                                        <Label alignment="CENTER" styleClass="white-text-primary" text="v1.12.19.01" textFill="WHITE" />
                                     </children>
                                 </VBox>
                                 <VBox alignment="CENTER_LEFT" maxWidth="140.0">
                                     <children>
-                                        <Label fx:id="ob_username" styleClass="green-bold-text" stylesheets="@../style.css" text="Username" textAlignment="CENTER" />
+                                        <Label fx:id="ob_username" styleClass="green-title-bold" stylesheets="@../style.css" text="Username" textAlignment="CENTER" />
                                         <TextField fx:id="lg_UsernameInput" maxWidth="140.0" styleClass="text-field">
                                             <VBox.margin>
                                                 <Insets />
                                             </VBox.margin>
                                         </TextField>
-                                        <Label fx:id="ob_passcode" styleClass="green-bold-text" stylesheets="@../style.css" text="Passcode" textAlignment="CENTER" />
+                                        <Label fx:id="ob_passcode" styleClass="green-title-bold" stylesheets="@../style.css" text="Passcode" textAlignment="CENTER" />
                                         <TextField fx:id="lg_PasscodeInput" maxWidth="140.0" styleClass="text-field">
                                             <VBox.margin>
                                                 <Insets />
@@ -56,19 +58,19 @@
                                         </TextField>
                                     </children>
                                 </VBox>
-                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleLogin" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #3b8686;" text="Login" textFill="WHITE">
+                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleLogin" prefHeight="30.0" prefWidth="140.0" text="Login" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="12.0" />
                                     </font>
-                           <contextMenu>
-                              <ContextMenu>
-                                <items>
-                                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-                                </items>
-                              </ContextMenu>
-                           </contextMenu>
+                                    <contextMenu>
+                                        <ContextMenu>
+                                            <items>
+                                                <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                            </items>
+                                        </ContextMenu>
+                                    </contextMenu>
                                 </Button>
-                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #3b8686;" text="Sign Up" textFill="WHITE">
+                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="30.0" prefWidth="140.0" text="Sign Up" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="12.0" />
                                     </font>
