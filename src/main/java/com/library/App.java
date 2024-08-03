@@ -35,14 +35,14 @@ public class App extends Application {
                 System.exit(0);
             });
 
-            //Add the icon
+            // Add the icon
             Image icon = new Image(getClass().getResourceAsStream("/com/library/image/icon.png"));
             primaryStage.getIcons().add(icon);
 
             // Show the stage
             primaryStage.show();
 
-            //@todo ADDING LOADING BAR
+            // @todo ADDING LOADING BAR
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,70 +1,48 @@
-.text-field,
-.button,
-.anchor-pane,
-.green-bold-text,
-.white-bold-text,
-.table-view .column-header .label,
-.table-view .table-cell {
-  -fx-font-weight: bold;
-  font-weight: bold;
-}
-.text-field {
-  -fx-background-color: #3b8686;
-  background-color: #3b8686;
-}
-.button {
-  -fx-background-color: #3b8686;
-  background-color: #3b8686;
-  -fx-text-fill: white;
-}
-.button:hover {
-  -fx-background-color: #3b8686;
-  background-color: #3b8686;
-}
-.button:pressed {
-  -fx-background-color: #3b8686;
-  background-color: #3b8686;
-}
-.button-main-view {
-  -fx-background-color: transparent;
-  background-color: transparent;
-}
-.anchor-pane {
-  -fx-background-color: #a8dba8;
-  background-color: #a8dba8;
-  -fx-border-color: #3b8686;
-  border-color: #3b8686;
-  -fx-border-width: 4px;
-  border-width: 4px;
-  -fx-border-style: solid;
-  border-style: solid;
-}
-.green-bold-text {
+.green-title-bold {
   -fx-text-fill: #3b8686;
-}
-.white-bold-text {
-  -fx-text-fill: WHITE;
-}
-.table-view {
-  -fx-background-color: #a8dba8;
-  background-color: #a8dba8;
-  -fx-border-color: #3b8686;
-  border-color: #3b8686;
-  -fx-border-width: 4px;
-  border-width: 4px;
-}
-.table-view .column-header-background {
-  -fx-background-color: #3b8686;
-  background-color: #3b8686;
-}
-.table-view .column-header .label {
-  -fx-text-fill: white;
+  -fx-font-weight: bold;
 }
 
-.table-view .table-row-cell {
-  -fx-background-color: #a8dba8;
-  background-color: #a8dba8;
+.white-text-primary {
+  -fx-text-fill: WHITE;
 }
-.table-view .table-cell {
-  -fx-text-fill: white;
+
+.anchor-pane {
+  -fx-background-color: #a8dba8;
+  -fx-border-color: #3b8686;
+  -fx-border-width: 4px;
+  -fx-border-style: solid;
+}
+
+.hbox {
+  -fx-background-color: #a8dba8;
+  -fx-border-color: #3b8686;
+  -fx-border-width: 4px;
+  -fx-border-style: solid;
+}
+
+.text-field {
+  -fx-background-color: #3b8686;
+  -fx-background-radius: 5;
+  -fx-padding: 5px;
+  -fx-text-fill: WHITE;
+}
+
+.text-field:hover {
+  -fx-background-color: #3b868695;
+}
+
+.button {
+  -fx-background-color: #3b8686;
+  -fx-background-radius: 5;
+  -fx-text-fill: WHITE;
+  -fx-padding: 5px 10px;
+}
+
+.button:hover {
+  -fx-background-color: #3b868695;
+}
+
+.button:pressed {
+  -fx-background-color: #3b868695;
 }
